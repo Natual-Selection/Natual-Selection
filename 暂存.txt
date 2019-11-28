@@ -1,0 +1,69 @@
+double accountIn(double m);
+double accountOut(double m);
+using namespace std;
+
+account judjeAccount (int m)
+{
+	switch (m)				//
+		{
+		case 123: return a; break;
+		case 456: return b; break;
+		case 789: return c; break;
+		case 999: return d; break;
+		default: cout << "Please enter correct number! : " ; return error; break;
+		}
+}
+
+void judjePassword(account n)
+{
+	int accountPassword, cinTime;
+	for (cinTime = 1; cinTime <= 3; cinTime++)
+	{
+		cin >> accountPassword;
+		if (accountPassword == n.password) break;
+		if (cinTime == 3) cout << "......." << endl;			// give three time to import
+		else cout << "Please try again: ";
+	}
+	// password is correct
+	cout << endl << "Welcome! " << n.number << endl << endl; 
+}
+
+account selectService(account n)
+{
+	cout << "Service type:\n0.return 1.inquiry  2.deposit  3.draw\n\nPlease choice service: ";
+	int m;
+	cin >> m;
+	
+	switch (m)
+	{
+	case 1: cout << "\nYour deposit is: " << n.balance << endl; break; // inquiry
+	case 2: n.balance = accountIn(n.balance);  break;				// daposit
+	case 3: n.balance = accountOut(n.balance); break;				// draw
+	case 0: break;													// return to select line
+	}
+	cout << endl;
+	return n;
+}
+
+double accountIn(double m) 
+{
+	cout << "Please enter amount you want deposit: ";
+	double n;
+	cin >> n;
+	cout << "\nNow you deposit is: " << m + n << endl;
+	return m + n;
+}
+
+double accountOut(double m)
+{
+	cout << "Please enter amount you want draw: ";
+	double n;
+	cin >> n;
+	if (n > m)
+	{
+		cout << "\nYou are wanting for peach!";
+		return 0;
+	}
+	cout << "\nNow you deposit is: " << m - n << endl;
+	return m+n;
+}
